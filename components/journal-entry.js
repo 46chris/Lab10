@@ -56,6 +56,11 @@ class JournalEntry extends HTMLElement {
                 margin-bottom: 5px;
                 margin-top: 5px;
             }
+
+            .no-body{ 
+              display:none; 
+            }
+
         </style>
         <article class="entry">
             <h2 class="entry-title"></h2>

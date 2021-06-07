@@ -47,11 +47,22 @@
     });
     var client = factory.client();
 
-    client.on(client.Event.SDK_READY, function() {
-      var treatment = client.getTreatment('double_column');
-      console.log(treatment); 
+    //Make sure you can call function again 
+    let call; 
+    client.on(client.Event.SDK_READY, call = function() {
+      var treatment = client.getTreatment('No_body');
       if (treatment === 'on') {
-        document.querySelector("main").className += "double-column"; 
+        let entries = document.querySelectorAll('journal-entry');
+        //Keep calling the function if the entries var is not populated 
+        if (entries.length != 0){ 
+          for (let i = 0; i < entries.length; i++){ 
+            entries[i].shadowRoot.querySelector(".entry-content").className = "no-body"; 
+          }
+        }
+        else { 
+          setTimeout(call, 15); 
+        }
+
       } else if (treatment === 'off') {
         // Insert code for off treatment
       } else {
